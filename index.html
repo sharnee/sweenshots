@@ -3,29 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SweenShots — Figma Export</title>
+<title>SweenShots — Figma Export (Salt Brown)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --ink: #1C1B19;
-    --ink-mid: #2A2926;
-    --ink-light: #3A3835;
-    --stone: #F5F2EE;
-    --muted: #8A8780;
-    --border: rgba(255,255,255,0.12);
-    --border-dark: rgba(255,255,255,0.08);
-    --photo-bg: #C8C5BE;
-    --photo-bg2: #B8B5AE;
-    --photo-bg3: #D0CDC6;
+    /* Salt Design System — Brown Ramp (exact values) */
+    --brown-100: #F3EEE8;
+    --brown-200: #EDE5D8;
+    --brown-300: #D7BA9D;
+    --brown-400: #B88A67;
+    --brown-500: #996C48;
+    --brown-600: #7D532F;
+    --brown-700: #673F1B;
+    --brown-800: #422407;
+    --brown-900: #2E1905;
+    --salt-white: #FFFFFF;
+    --salt-black: #000000;
+
+    /* Semantic aliases */
+    --ink: #2E1905;
+    --ink-mid: #422407;
+    --ink-light: #673F1B;
+    --stone: #F3EEE8;
+    --muted: #B88A67;
+    --border: rgba(215,186,157,0.35);
+    --border-dark: rgba(215,186,157,0.18);
+    --photo-bg: #D7BA9D;
+    --photo-bg2: #C9A888;
+    --photo-bg3: #DDBA9E;
     --serif: 'Cormorant Garamond', Georgia, serif;
     --sans: 'DM Sans', sans-serif;
   }
 
   body {
-    background: #111;
+    background: #3A2010;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,7 +63,7 @@
   ============================================================ */
   .frame-desktop {
     width: 1440px;
-    background: var(--ink);
+    background: var(--brown-100);
     overflow: hidden;
     position: relative;
   }
@@ -61,15 +75,16 @@
     justify-content: space-between;
     padding: 0 80px;
     height: 64px;
-    border-bottom: 1px solid var(--border);
+    background: #FFFFFF;
+    border-bottom: 2px solid var(--brown-500);
   }
   .nav-logo {
     font-family: var(--sans);
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--brown-900);
   }
   .nav-links {
     display: flex;
@@ -81,7 +96,7 @@
     font-weight: 400;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.75);
+    color: var(--brown-700);
     text-decoration: none;
   }
 
@@ -97,7 +112,7 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #2a2926 0%, #1c1b19 40%, #0e0e0c 100%);
+    background: linear-gradient(135deg, #673F1B 0%, #422407 40%, #2E1905 100%);
   }
   .hero-bg-grid {
     position: absolute;
@@ -108,16 +123,16 @@
     gap: 2px;
     opacity: 0.18;
   }
-  .hero-bg-grid div { background: #888; }
+  .hero-bg-grid div { background: #B88A67; }
   .hero-bg-grid div:nth-child(2),
   .hero-bg-grid div:nth-child(4),
   .hero-bg-grid div:nth-child(6),
   .hero-bg-grid div:nth-child(9),
-  .hero-bg-grid div:nth-child(11) { background: #aaa; }
+  .hero-bg-grid div:nth-child(11) { background: #D7BA9D; }
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(20,19,17,0.92) 0%, rgba(20,19,17,0.3) 50%, transparent 100%);
+    background: linear-gradient(to top, rgba(46,25,5,0.95) 0%, rgba(66,36,7,0.3) 50%, transparent 100%);
   }
   .hero-content {
     position: relative;
@@ -130,7 +145,7 @@
     font-weight: 300;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
+    color: var(--brown-300);
     margin-bottom: 16px;
   }
   .hero-title {
@@ -147,25 +162,25 @@
     display: inline-block;
     font-family: var(--sans);
     font-size: 10px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: #fff;
-    border: 1px solid rgba(255,255,255,0.6);
+    border: 1px solid var(--brown-400);
     padding: 14px 28px;
     text-decoration: none;
-    background: transparent;
+    background: var(--brown-600);
     cursor: pointer;
   }
 
   /* TICKER */
   .ticker {
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--brown-300);
+    border-bottom: 1px solid var(--brown-300);
     padding: 12px 0;
     overflow: hidden;
     white-space: nowrap;
-    background: rgba(255,255,255,0.02);
+    background: var(--brown-200);
   }
   .ticker-track {
     display: inline-block;
@@ -178,7 +193,7 @@
     font-weight: 300;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
+    color: var(--brown-600);
     padding: 0 60px;
   }
   @keyframes scroll {
@@ -193,10 +208,10 @@
   .section-eyebrow {
     font-family: var(--sans);
     font-size: 10px;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
+    color: var(--brown-500);
     margin-bottom: 10px;
   }
   .section-title {
@@ -204,11 +219,12 @@
     font-size: 52px;
     font-weight: 300;
     line-height: 1.1;
-    color: #fff;
+    color: var(--brown-900);
     margin-bottom: 40px;
   }
   .section-title em {
     font-style: italic;
+    color: var(--brown-600);
   }
 
   /* PHOTO GRID */
@@ -241,9 +257,9 @@
   .photo-cell-short {
     aspect-ratio: 2/3;
   }
-  .photo-cell-short:nth-child(1) { background: #c4c1ba; }
-  .photo-cell-short:nth-child(2) { background: #b8b5ae; }
-  .photo-cell-short:nth-child(3) { background: #cac7c0; }
+  .photo-cell-short:nth-child(1) { background: #D7BA9D; }
+  .photo-cell-short:nth-child(2) { background: #C4A080; }
+  .photo-cell-short:nth-child(3) { background: #DDBA9E; }
   .photo-placeholder {
     position: absolute;
     inset: 0;
@@ -261,17 +277,19 @@
     font-weight: 300;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
+    color: #FFFFFF;
   }
 
   /* SERVICES */
   .services-section {
     margin: 0 80px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--brown-300);
+    background: #FFFFFF;
+    border-top: 3px solid var(--brown-500);
   }
   .services-header {
     padding: 28px 36px 20px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--brown-200);
   }
   .services-grid {
     display: grid;
@@ -279,8 +297,8 @@
   }
   .service-cell {
     padding: 32px 36px;
-    border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--brown-200);
+    border-bottom: 1px solid var(--brown-200);
   }
   .service-cell:nth-child(even) { border-right: none; }
   .service-cell:nth-child(3),
@@ -288,29 +306,31 @@
   .service-num {
     font-family: var(--sans);
     font-size: 10px;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.35);
+    color: var(--brown-400);
     margin-bottom: 14px;
   }
   .service-name {
     font-family: var(--serif);
     font-size: 22px;
     font-weight: 400;
-    color: #fff;
+    color: var(--brown-900);
     margin-bottom: 10px;
   }
   .service-desc {
     font-family: var(--sans);
     font-size: 13px;
     font-weight: 300;
-    color: rgba(255,255,255,0.5);
+    color: var(--brown-700);
     line-height: 1.65;
   }
 
   /* SHOP */
   .shop-section {
     padding: 72px 80px 0;
+    background: var(--brown-800);
+    border-top: 2px solid var(--brown-600);
   }
   .preset-grid {
     display: grid;
@@ -322,27 +342,27 @@
   }
   .preset-card {
     background: rgba(255,255,255,0.05);
-    border: 1px solid var(--border);
+    border: 1px solid rgba(215,186,157,0.3);
     padding: 24px 28px;
   }
   .preset-name {
     font-family: var(--serif);
     font-size: 20px;
     font-weight: 400;
-    color: #fff;
+    color: var(--brown-100);
     margin-bottom: 6px;
   }
   .preset-sub {
     font-family: var(--sans);
     font-size: 12px;
     font-weight: 300;
-    color: rgba(255,255,255,0.4);
+    color: rgba(215,186,157,0.6);
   }
   .preset-note {
     font-family: var(--sans);
     font-size: 12px;
     font-weight: 300;
-    color: rgba(255,255,255,0.35);
+    color: rgba(215,186,157,0.5);
     letter-spacing: 0.02em;
     margin-bottom: 72px;
   }
@@ -350,16 +370,16 @@
   /* BRANDS */
   .brands-section {
     padding: 0 80px 72px;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--brown-300);
     margin: 0 80px;
   }
   .brands-label {
     font-family: var(--sans);
     font-size: 10px;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
+    color: var(--brown-500);
     padding-top: 36px;
     margin-bottom: 20px;
   }
@@ -371,18 +391,19 @@
   .pill {
     font-family: var(--sans);
     font-size: 11px;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
-    border: 1px solid var(--border);
+    color: var(--brown-700);
+    border: 1px solid var(--brown-500);
     padding: 8px 16px;
+    background: #FFFFFF;
   }
 
   /* CTA BAND */
   .cta-band {
-    background: #141412;
-    border-top: 1px solid var(--border);
+    background: var(--brown-800);
+    border-top: 3px solid var(--brown-600);
     padding: 100px 80px;
     text-align: center;
   }
@@ -391,7 +412,7 @@
     font-size: 72px;
     font-weight: 300;
     font-style: italic;
-    color: #fff;
+    color: var(--brown-100);
     line-height: 1.05;
     margin-bottom: 18px;
   }
@@ -401,18 +422,19 @@
     font-weight: 300;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
+    color: var(--brown-400);
     margin-bottom: 40px;
   }
   .cta-btn {
     display: inline-block;
     font-family: var(--sans);
     font-size: 10px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.55);
+    color: var(--brown-100);
+    background: var(--brown-600);
+    border: 1px solid var(--brown-400);
     padding: 16px 36px;
     cursor: pointer;
   }
@@ -423,20 +445,21 @@
     justify-content: space-between;
     align-items: flex-end;
     padding: 40px 80px;
-    border-top: 1px solid var(--border);
+    background: #FFFFFF;
+    border-top: 2px solid var(--brown-500);
   }
   .footer-logo {
     font-family: var(--serif);
     font-size: 22px;
     font-weight: 300;
-    color: rgba(255,255,255,0.8);
+    color: var(--brown-900);
     margin-bottom: 6px;
   }
   .footer-copy {
     font-family: var(--sans);
     font-size: 11px;
     font-weight: 300;
-    color: rgba(255,255,255,0.3);
+    color: var(--brown-400);
   }
   .footer-links {
     display: flex;
@@ -447,7 +470,7 @@
     font-size: 11px;
     font-weight: 300;
     letter-spacing: 0.06em;
-    color: rgba(255,255,255,0.45);
+    color: var(--brown-700);
     text-decoration: none;
   }
 
@@ -456,7 +479,7 @@
   ============================================================ */
   .frame-mobile {
     width: 390px;
-    background: var(--ink);
+    background: var(--brown-100);
     overflow: hidden;
   }
 
@@ -466,15 +489,16 @@
     justify-content: space-between;
     padding: 0 24px;
     height: 56px;
-    border-bottom: 1px solid var(--border);
+    background: #FFFFFF;
+    border-bottom: 2px solid var(--brown-500);
   }
   .m-nav-logo {
     font-family: var(--sans);
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--brown-900);
   }
   .m-nav-links {
     display: flex;
@@ -486,7 +510,7 @@
     font-weight: 400;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.65);
+    color: var(--brown-700);
     text-decoration: none;
   }
 
@@ -501,12 +525,12 @@
   .m-hero-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #2a2926 0%, #1c1b19 50%, #0e0e0c 100%);
+    background: linear-gradient(135deg, #673F1B 0%, #422407 50%, #2E1905 100%);
   }
   .m-hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(18,17,15,0.95) 0%, rgba(18,17,15,0.2) 60%, transparent 100%);
+    background: linear-gradient(to top, rgba(46,25,5,0.97) 0%, rgba(66,36,7,0.2) 60%, transparent 100%);
   }
   .m-hero-content { position: relative; z-index: 2; }
   .m-hero-eyebrow {
@@ -515,7 +539,7 @@
     font-weight: 300;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
+    color: var(--brown-300);
     margin-bottom: 12px;
   }
   .m-hero-title {
@@ -531,34 +555,37 @@
     display: inline-block;
     font-family: var(--sans);
     font-size: 9px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: #fff;
-    border: 1px solid rgba(255,255,255,0.55);
+    background: var(--brown-600);
+    border: 1px solid var(--brown-400);
     padding: 12px 22px;
     text-decoration: none;
   }
 
   .m-ticker {
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--brown-300);
+    border-bottom: 1px solid var(--brown-300);
     padding: 10px 0;
     overflow: hidden;
     white-space: nowrap;
-    background: rgba(255,255,255,0.02);
+    background: var(--brown-200);
   }
 
   .m-section {
     padding: 48px 24px 0;
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--brown-200);
   }
   .m-section-eyebrow {
     font-family: var(--sans);
     font-size: 9px;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
+    color: var(--brown-500);
     margin-bottom: 8px;
   }
   .m-section-title {
@@ -566,10 +593,10 @@
     font-size: 34px;
     font-weight: 300;
     line-height: 1.15;
-    color: #fff;
+    color: var(--brown-900);
     margin-bottom: 28px;
   }
-  .m-section-title em { font-style: italic; }
+  .m-section-title em { font-style: italic; color: var(--brown-600); }
 
   .m-photo-grid {
     padding: 0;
@@ -598,28 +625,32 @@
     aspect-ratio: 2/3;
     position: relative;
   }
-  .m-photo-short:nth-child(1) { background: #c4c1ba; }
-  .m-photo-short:nth-child(2) { background: #b8b5ae; }
-  .m-photo-short:nth-child(3) { background: #cac7c0; }
+  .m-photo-short:nth-child(1) { background: #D7BA9D; }
+  .m-photo-short:nth-child(2) { background: #C4A080; }
+  .m-photo-short:nth-child(3) { background: #DDBA9E; }
   .m-photo-label {
     position: absolute;
     bottom: 10px;
     left: 10px;
     font-family: var(--sans);
     font-size: 8px;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
+    color: #FFFFFF;
+    background: rgba(66,36,7,0.7);
+    padding: 2px 7px;
   }
 
   .m-services {
     margin: 0 24px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--brown-300);
+    background: #FFFFFF;
+    border-top: 3px solid var(--brown-500);
   }
   .m-services-header {
     padding: 20px 20px 14px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--brown-200);
   }
   .m-services-grid {
     display: grid;
@@ -627,8 +658,8 @@
   }
   .m-service-cell {
     padding: 20px;
-    border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--brown-200);
+    border-bottom: 1px solid var(--brown-200);
   }
   .m-service-cell:nth-child(even) { border-right: none; }
   .m-service-cell:nth-child(3),
@@ -636,16 +667,16 @@
   .m-service-num {
     font-family: var(--sans);
     font-size: 9px;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.3);
+    color: var(--brown-400);
     margin-bottom: 10px;
   }
   .m-service-name {
     font-family: var(--serif);
     font-size: 16px;
     font-weight: 400;
-    color: #fff;
+    color: var(--brown-900);
     margin-bottom: 8px;
     line-height: 1.2;
   }
@@ -653,12 +684,14 @@
     font-family: var(--sans);
     font-size: 11px;
     font-weight: 300;
-    color: rgba(255,255,255,0.45);
+    color: var(--brown-700);
     line-height: 1.6;
   }
 
   .m-shop {
     padding: 48px 24px 0;
+    background: var(--brown-800);
+    border-top: 2px solid var(--brown-600);
   }
   .m-preset-grid {
     display: grid;
@@ -669,43 +702,44 @@
   }
   .m-preset-card {
     background: rgba(255,255,255,0.05);
-    border: 1px solid var(--border);
+    border: 1px solid rgba(215,186,157,0.3);
     padding: 18px 16px;
   }
   .m-preset-name {
     font-family: var(--serif);
     font-size: 16px;
     font-weight: 400;
-    color: #fff;
+    color: var(--brown-100);
     margin-bottom: 5px;
   }
   .m-preset-sub {
     font-family: var(--sans);
     font-size: 11px;
     font-weight: 300;
-    color: rgba(255,255,255,0.4);
+    color: rgba(215,186,157,0.55);
   }
   .m-preset-note {
     font-family: var(--sans);
     font-size: 11px;
     font-weight: 300;
-    color: rgba(255,255,255,0.3);
+    color: rgba(215,186,157,0.5);
     margin-bottom: 48px;
     padding: 0 24px;
   }
 
   .m-brands {
     padding: 0 24px 48px;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--brown-300);
     margin: 0 24px;
+    background: var(--brown-100);
   }
   .m-brands-label {
     font-family: var(--sans);
     font-size: 9px;
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
+    color: var(--brown-500);
     padding-top: 28px;
     margin-bottom: 14px;
   }
@@ -717,17 +751,18 @@
   .m-pill {
     font-family: var(--sans);
     font-size: 10px;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-    border: 1px solid var(--border);
+    color: var(--brown-700);
+    border: 1px solid var(--brown-500);
     padding: 7px 12px;
+    background: #FFFFFF;
   }
 
   .m-cta {
-    background: #141412;
-    border-top: 1px solid var(--border);
+    background: var(--brown-800);
+    border-top: 3px solid var(--brown-600);
     padding: 64px 24px;
     text-align: center;
   }
@@ -736,7 +771,7 @@
     font-size: 40px;
     font-weight: 300;
     font-style: italic;
-    color: #fff;
+    color: var(--brown-100);
     line-height: 1.1;
     margin-bottom: 14px;
   }
@@ -746,7 +781,7 @@
     font-weight: 300;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.38);
+    color: var(--brown-400);
     margin-bottom: 32px;
     line-height: 1.8;
   }
@@ -754,11 +789,12 @@
     display: inline-block;
     font-family: var(--sans);
     font-size: 9px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: #fff;
-    border: 1px solid rgba(255,255,255,0.5);
+    background: var(--brown-600);
+    border: 1px solid var(--brown-400);
     padding: 13px 28px;
   }
 
@@ -767,20 +803,21 @@
     justify-content: space-between;
     align-items: flex-end;
     padding: 28px 24px;
-    border-top: 1px solid var(--border);
+    background: #FFFFFF;
+    border-top: 2px solid var(--brown-500);
   }
   .m-footer-logo {
     font-family: var(--serif);
     font-size: 18px;
     font-weight: 300;
-    color: rgba(255,255,255,0.75);
+    color: var(--brown-900);
     margin-bottom: 4px;
   }
   .m-footer-copy {
     font-family: var(--sans);
     font-size: 10px;
     font-weight: 300;
-    color: rgba(255,255,255,0.25);
+    color: var(--brown-400);
   }
   .m-footer-links {
     display: flex;
@@ -792,7 +829,7 @@
     font-family: var(--sans);
     font-size: 11px;
     font-weight: 300;
-    color: rgba(255,255,255,0.4);
+    color: var(--brown-700);
     text-decoration: none;
   }
 </style>
@@ -842,7 +879,7 @@
     </div>
 
     <!-- WORK HEADING -->
-    <div class="section">
+    <div class="section" style="background:#FFFFFF; border-bottom: 1px solid #EDE5D8;">
       <div class="section-eyebrow">Selected Work</div>
       <div class="section-title">Capturing the<br><em>details of you.</em></div>
     </div>
@@ -852,13 +889,13 @@
       <div class="photo-row-2">
         <div class="photo-cell photo-cell-tall">
           <div class="photo-placeholder">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="2" stroke="white" stroke-width="1.5"/><circle cx="24" cy="24" r="7" stroke="white" stroke-width="1.5"/><path d="M4 16l8-6 6 8 6-5 6 6 6-4 8 5" stroke="white" stroke-width="1" opacity="0.5"/></svg>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="2" stroke="#7D532F" stroke-width="1.5"/><circle cx="24" cy="24" r="7" stroke="#7D532F" stroke-width="1.5"/><path d="M4 16l8-6 6 8 6-5 6 6 6-4 8 5" stroke="#7D532F" stroke-width="1" opacity="0.5"/></svg>
           </div>
           <div class="photo-category-label">Lifestyle</div>
         </div>
-        <div class="photo-cell photo-cell-tall" style="background:#b8b5ae;">
+        <div class="photo-cell photo-cell-tall" style="background:#C9A888;">
           <div class="photo-placeholder">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="2" stroke="white" stroke-width="1.5"/><circle cx="24" cy="24" r="7" stroke="white" stroke-width="1.5"/></svg>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="2" stroke="#7D532F" stroke-width="1.5"/><circle cx="24" cy="24" r="7" stroke="#7D532F" stroke-width="1.5"/></svg>
           </div>
           <div class="photo-category-label">Editorial</div>
         </div>
@@ -866,17 +903,17 @@
       <div class="photo-row-3">
         <div class="photo-cell photo-cell-short">
           <div class="photo-placeholder">
-            <svg width="36" height="36" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="2" stroke="white" stroke-width="1.5"/><circle cx="24" cy="24" r="7" stroke="white" stroke-width="1.5"/></svg>
+            <svg width="36" height="36" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="2" stroke="#B88A67" stroke-width="1.5"/><circle cx="24" cy="24" r="7" stroke="#B88A67" stroke-width="1.5"/></svg>
           </div>
         </div>
         <div class="photo-cell photo-cell-short">
           <div class="photo-placeholder">
-            <svg width="36" height="36" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="2" stroke="white" stroke-width="1.5"/><circle cx="24" cy="24" r="7" stroke="white" stroke-width="1.5"/></svg>
+            <svg width="36" height="36" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="2" stroke="#B88A67" stroke-width="1.5"/><circle cx="24" cy="24" r="7" stroke="#B88A67" stroke-width="1.5"/></svg>
           </div>
         </div>
         <div class="photo-cell photo-cell-short">
           <div class="photo-placeholder">
-            <svg width="36" height="36" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="2" stroke="white" stroke-width="1.5"/><circle cx="24" cy="24" r="7" stroke="white" stroke-width="1.5"/></svg>
+            <svg width="36" height="36" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="2" stroke="#B88A67" stroke-width="1.5"/><circle cx="24" cy="24" r="7" stroke="#B88A67" stroke-width="1.5"/></svg>
           </div>
         </div>
       </div>
@@ -932,7 +969,7 @@
 
     <!-- BRANDS -->
     <div style="padding: 0 80px 80px;">
-      <div style="border: 1px solid var(--border); padding: 36px;">
+      <div style="border: 1px solid #D7BA9D; padding: 36px; background: #FFFFFF;">
         <div class="section-eyebrow" style="margin-bottom:18px;">Brands We've Worked With</div>
         <div class="brands-pills">
           <div class="pill">Browns</div>
@@ -1020,13 +1057,13 @@
       <div class="m-photo-row-2">
         <div class="m-photo-tall">
           <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-            <svg width="32" height="32" viewBox="0 0 48 48" fill="none" style="opacity:0.2;"><rect x="4" y="10" width="40" height="30" rx="2" stroke="white" stroke-width="2"/><circle cx="24" cy="24" r="7" stroke="white" stroke-width="2"/></svg>
+            <svg width="32" height="32" viewBox="0 0 48 48" fill="none" style="opacity:0.3;"><rect x="4" y="10" width="40" height="30" rx="2" stroke="#7D532F" stroke-width="2"/><circle cx="24" cy="24" r="7" stroke="#7D532F" stroke-width="2"/></svg>
           </div>
           <div class="m-photo-label">Lifestyle</div>
         </div>
         <div class="m-photo-tall">
           <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-            <svg width="32" height="32" viewBox="0 0 48 48" fill="none" style="opacity:0.2;"><rect x="4" y="10" width="40" height="30" rx="2" stroke="white" stroke-width="2"/><circle cx="24" cy="24" r="7" stroke="white" stroke-width="2"/></svg>
+            <svg width="32" height="32" viewBox="0 0 48 48" fill="none" style="opacity:0.3;"><rect x="4" y="10" width="40" height="30" rx="2" stroke="#7D532F" stroke-width="2"/><circle cx="24" cy="24" r="7" stroke="#7D532F" stroke-width="2"/></svg>
           </div>
           <div class="m-photo-label">Editorial</div>
         </div>
@@ -1088,7 +1125,7 @@
 
     <!-- MOBILE BRANDS -->
     <div style="padding: 0 24px 48px;">
-      <div style="border:1px solid rgba(255,255,255,0.1);padding:24px 20px;">
+      <div style="border:1px solid #D7BA9D; padding:24px 20px; background:#FFFFFF;">
         <div class="m-brands-label" style="padding-top:0;margin-bottom:14px;">Brands We've Worked With</div>
         <div class="m-pills">
           <div class="m-pill">Browns</div>
