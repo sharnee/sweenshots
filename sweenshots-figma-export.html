@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SweenShots — Figma Export</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1C1B19;
+    --ink-mid: #2A2926;
+    --ink-light: #3A3835;
+    --stone: #F5F2EE;
+    --muted: #8A8780;
+    --border: rgba(255,255,255,0.12);
+    --border-dark: rgba(255,255,255,0.08);
+    --photo-bg: #C8C5BE;
+    --photo-bg2: #B8B5AE;
+    --photo-bg3: #D0CDC6;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  body {
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    padding: 60px 40px;
+    font-family: var(--sans);
+  }
+
+  .label-above {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  /* ============================================================
+     DESKTOP — 1440px
+  ============================================================ */
+  .frame-desktop {
+    width: 1440px;
+    background: var(--ink);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* NAV */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 80px;
+    height: 64px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+  }
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    height: 680px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 80px 72px;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #2a2926 0%, #1c1b19 40%, #0e0e0c 100%);
+  }
+  .hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2px;
+    opacity: 0.18;
+  }
+  .hero-bg-grid div { background: #888; }
+  .hero-bg-grid div:nth-child(2),
+  .hero-bg-grid div:nth-child(4),
+  .hero-bg-grid div:nth-child(6),
+  .hero-bg-grid div:nth-child(9),
+  .hero-bg-grid div:nth-child(11) { background: #aaa; }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(20,19,17,0.92) 0%, rgba(20,19,17,0.3) 50%, transparent 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+  }
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 16px;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: 88px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.0;
+    color: #fff;
+    margin-bottom: 36px;
+    letter-spacing: -0.01em;
+  }
+  .hero-btn {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.6);
+    padding: 14px 28px;
+    text-decoration: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  /* TICKER */
+  .ticker {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    background: rgba(255,255,255,0.02);
+  }
+  .ticker-track {
+    display: inline-block;
+    animation: scroll 22s linear infinite;
+  }
+  .ticker-text {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    padding: 0 60px;
+  }
+  @keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* WORK SECTION */
+  .section {
+    padding: 72px 80px 0;
+  }
+  .section-eyebrow {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 300;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 40px;
+  }
+  .section-title em {
+    font-style: italic;
+  }
+
+  /* PHOTO GRID */
+  .photo-grid {
+    padding: 0 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .photo-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+  .photo-row-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3px;
+    margin-bottom: 80px;
+  }
+  .photo-cell {
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-cell-tall {
+    aspect-ratio: 4/5;
+    background: var(--photo-bg);
+  }
+  .photo-cell-tall:nth-child(2) { background: var(--photo-bg2); }
+  .photo-cell-short {
+    aspect-ratio: 2/3;
+  }
+  .photo-cell-short:nth-child(1) { background: #c4c1ba; }
+  .photo-cell-short:nth-child(2) { background: #b8b5ae; }
+  .photo-cell-short:nth-child(3) { background: #cac7c0; }
+  .photo-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .photo-placeholder svg { opacity: 0.25; }
+  .photo-category-label {
+    position: absolute;
+    bottom: 14px;
+    left: 16px;
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* SERVICES */
+  .services-section {
+    margin: 0 80px;
+    border: 1px solid var(--border);
+  }
+  .services-header {
+    padding: 28px 36px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .service-cell {
+    padding: 32px 36px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .service-cell:nth-child(even) { border-right: none; }
+  .service-cell:nth-child(3),
+  .service-cell:nth-child(4) { border-bottom: none; }
+  .service-num {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 14px;
+  }
+  .service-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .service-desc {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.65;
+  }
+
+  /* SHOP */
+  .shop-section {
+    padding: 72px 80px 0;
+  }
+  .preset-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin-top: 28px;
+    margin-bottom: 16px;
+    max-width: 560px;
+  }
+  .preset-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    padding: 24px 28px;
+  }
+  .preset-name {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .preset-sub {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+  }
+  .preset-note {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.02em;
+    margin-bottom: 72px;
+  }
+
+  /* BRANDS */
+  .brands-section {
+    padding: 0 80px 72px;
+    border-top: 1px solid var(--border);
+    margin: 0 80px;
+  }
+  .brands-label {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    padding-top: 36px;
+    margin-bottom: 20px;
+  }
+  .brands-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .pill {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+  }
+
+  /* CTA BAND */
+  .cta-band {
+    background: #141412;
+    border-top: 1px solid var(--border);
+    padding: 100px 80px;
+    text-align: center;
+  }
+  .cta-title {
+    font-family: var(--serif);
+    font-size: 72px;
+    font-weight: 300;
+    font-style: italic;
+    color: #fff;
+    line-height: 1.05;
+    margin-bottom: 18px;
+  }
+  .cta-contact {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 40px;
+  }
+  .cta-btn {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.55);
+    padding: 16px 36px;
+    cursor: pointer;
+  }
+
+  /* FOOTER */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 40px 80px;
+    border-top: 1px solid var(--border);
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 6px;
+  }
+  .footer-copy {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.3);
+  }
+  .footer-links {
+    display: flex;
+    gap: 32px;
+  }
+  .footer-links a {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+  }
+
+  /* ============================================================
+     MOBILE — 390px
+  ============================================================ */
+  .frame-mobile {
+    width: 390px;
+    background: var(--ink);
+    overflow: hidden;
+  }
+
+  .m-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 56px;
+    border-bottom: 1px solid var(--border);
+  }
+  .m-nav-logo {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .m-nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  .m-nav-links a {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+  }
+
+  .m-hero {
+    position: relative;
+    height: 480px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 24px 48px;
+    overflow: hidden;
+  }
+  .m-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #2a2926 0%, #1c1b19 50%, #0e0e0c 100%);
+  }
+  .m-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(18,17,15,0.95) 0%, rgba(18,17,15,0.2) 60%, transparent 100%);
+  }
+  .m-hero-content { position: relative; z-index: 2; }
+  .m-hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 12px;
+  }
+  .m-hero-title {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 28px;
+  }
+  .m-hero-btn {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.55);
+    padding: 12px 22px;
+    text-decoration: none;
+  }
+
+  .m-ticker {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    background: rgba(255,255,255,0.02);
+  }
+
+  .m-section {
+    padding: 48px 24px 0;
+  }
+  .m-section-eyebrow {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 8px;
+  }
+  .m-section-title {
+    font-family: var(--serif);
+    font-size: 34px;
+    font-weight: 300;
+    line-height: 1.15;
+    color: #fff;
+    margin-bottom: 28px;
+  }
+  .m-section-title em { font-style: italic; }
+
+  .m-photo-grid {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .m-photo-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+  .m-photo-row-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 48px;
+  }
+  .m-photo-tall {
+    aspect-ratio: 3/4;
+    background: var(--photo-bg);
+    position: relative;
+  }
+  .m-photo-tall:nth-child(2) { background: var(--photo-bg2); }
+  .m-photo-short {
+    aspect-ratio: 2/3;
+    position: relative;
+  }
+  .m-photo-short:nth-child(1) { background: #c4c1ba; }
+  .m-photo-short:nth-child(2) { background: #b8b5ae; }
+  .m-photo-short:nth-child(3) { background: #cac7c0; }
+  .m-photo-label {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-family: var(--sans);
+    font-size: 8px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .m-services {
+    margin: 0 24px;
+    border: 1px solid var(--border);
+  }
+  .m-services-header {
+    padding: 20px 20px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .m-services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .m-service-cell {
+    padding: 20px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .m-service-cell:nth-child(even) { border-right: none; }
+  .m-service-cell:nth-child(3),
+  .m-service-cell:nth-child(4) { border-bottom: none; }
+  .m-service-num {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 10px;
+  }
+  .m-service-name {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .m-service-desc {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+  }
+
+  .m-shop {
+    padding: 48px 24px 0;
+  }
+  .m-preset-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+  }
+  .m-preset-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    padding: 18px 16px;
+  }
+  .m-preset-name {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 5px;
+  }
+  .m-preset-sub {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+  }
+  .m-preset-note {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 48px;
+    padding: 0 24px;
+  }
+
+  .m-brands {
+    padding: 0 24px 48px;
+    border-top: 1px solid var(--border);
+    margin: 0 24px;
+  }
+  .m-brands-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    padding-top: 28px;
+    margin-bottom: 14px;
+  }
+  .m-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .m-pill {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    border: 1px solid var(--border);
+    padding: 7px 12px;
+  }
+
+  .m-cta {
+    background: #141412;
+    border-top: 1px solid var(--border);
+    padding: 64px 24px;
+    text-align: center;
+  }
+  .m-cta-title {
+    font-family: var(--serif);
+    font-size: 40px;
+    font-weight: 300;
+    font-style: italic;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+  .m-cta-contact {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.38);
+    margin-bottom: 32px;
+    line-height: 1.8;
+  }
+  .m-cta-btn {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 13px 28px;
+  }
+
+  .m-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 28px 24px;
+    border-top: 1px solid var(--border);
+  }
+  .m-footer-logo {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 4px;
+  }
+  .m-footer-copy {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.25);
+  }
+  .m-footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+  .m-footer-links a {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     DESKTOP FRAME
+============================================================ -->
+<div>
+  <div class="label-above">DESKTOP — 1440px</div>
+  <div class="frame-desktop">
+
+    <!-- NAV -->
+    <nav class="nav">
+      <div class="nav-logo">SweenShots</div>
+      <div class="nav-links">
+        <a href="#">Work</a>
+        <a href="#">Book</a>
+        <a href="#">Shop</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="hero-bg-grid">
+          <div></div><div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div><div></div>
+        </div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">Lifestyle &amp; Blogger Photography</div>
+        <h1 class="hero-title">Photographs<br>that speak<br>out loud.</h1>
+        <a class="hero-btn" href="#">Book a Session</a>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="ticker">
+      <div class="ticker-track">
+        <span class="ticker-text">Lifestyle &nbsp;·&nbsp; Editorial &nbsp;·&nbsp; Brand Partnerships &nbsp;·&nbsp; Blogger Sessions &nbsp;·&nbsp; Lightroom Presets &nbsp;·&nbsp; Lifestyle &nbsp;·&nbsp; Editorial &nbsp;·&nbsp; Brand Partnerships &nbsp;·&nbsp; Blogger Sessions &nbsp;·&nbsp; Lightroom Presets &nbsp;·&nbsp; Lifestyle &nbsp;·&nbsp; Editorial &nbsp;·&nbsp; Brand Partnerships &nbsp;·&nbsp; Blogger Sessions &nbsp;·&nbsp; Lightroom Presets &nbsp;·&nbsp;</span>
+        <span class="ticker-text">Lifestyle &nbsp;·&nbsp; Editorial &nbsp;·&nbsp; Brand Partnerships &nbsp;·&nbsp; Blogger Sessions &nbsp;·&nbsp; Lightroom Presets &nbsp;·&nbsp; Lifestyle &nbsp;·&nbsp; Editorial &nbsp;·&nbsp; Brand Partnerships &nbsp;·&nbsp; Blogger Sessions &nbsp;·&nbsp; Lightroom Presets &nbsp;·&nbsp; Lifestyle &nbsp;·&nbsp; Editorial &nbsp;·&nbsp; Brand Partnerships &nbsp;·&nbsp; Blogger Sessions &nbsp;·&nbsp; Lightroom Presets &nbsp;·&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- WORK HEADING -->
+    <div class="section">
+      <div class="section-eyebrow">Selected Work</div>
+      <div class="section-title">Capturing the<br><em>details of you.</em></div>
+    </div>
+
+    <!-- PHOTO GRID -->
+    <div class="photo-grid">
+      <div class="photo-row-2">
+        <div class="photo-cell photo-cell-tall">
+          <div class="photo-placeholder">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="2" stroke="white" stroke-width="1.5"/><circle cx="24" cy="24" r="7" stroke="white" stroke-width="1.5"/><path d="M4 16l8-6 6 8 6-5 6 6 6-4 8 5" stroke="white" stroke-width="1" opacity="0.5"/></svg>
+          </div>
+          <div class="photo-category-label">Lifestyle</div>
+        </div>
+        <div class="photo-cell photo-cell-tall" style="background:#b8b5ae;">
+          <div class="photo-placeholder">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="2" stroke="white" stroke-width="1.5"/><circle cx="24" cy="24" r="7" stroke="white" stroke-width="1.5"/></svg>
+          </div>
+          <div class="photo-category-label">Editorial</div>
+        </div>
+      </div>
+      <div class="photo-row-3">
+        <div class="photo-cell photo-cell-short">
+          <div class="photo-placeholder">
+            <svg width="36" height="36" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="2" stroke="white" stroke-width="1.5"/><circle cx="24" cy="24" r="7" stroke="white" stroke-width="1.5"/></svg>
+          </div>
+        </div>
+        <div class="photo-cell photo-cell-short">
+          <div class="photo-placeholder">
+            <svg width="36" height="36" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="2" stroke="white" stroke-width="1.5"/><circle cx="24" cy="24" r="7" stroke="white" stroke-width="1.5"/></svg>
+          </div>
+        </div>
+        <div class="photo-cell photo-cell-short">
+          <div class="photo-placeholder">
+            <svg width="36" height="36" viewBox="0 0 48 48" fill="none"><rect x="4" y="10" width="40" height="30" rx="2" stroke="white" stroke-width="1.5"/><circle cx="24" cy="24" r="7" stroke="white" stroke-width="1.5"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <div style="padding: 0 80px 80px;">
+      <div class="services-section" style="margin: 0;">
+        <div class="services-header">
+          <div class="section-eyebrow" style="margin:0;">Services</div>
+        </div>
+        <div class="services-grid">
+          <div class="service-cell">
+            <div class="service-num">01</div>
+            <div class="service-name">Lifestyle Shoots</div>
+            <div class="service-desc">Freedom, movement, and authentic moments — scheduled 7 days a week.</div>
+          </div>
+          <div class="service-cell">
+            <div class="service-num">02</div>
+            <div class="service-name">Blog Content</div>
+            <div class="service-desc">Curated content tailored to your brand voice and platform aesthetic.</div>
+          </div>
+          <div class="service-cell">
+            <div class="service-num">03</div>
+            <div class="service-name">Brand Collabs</div>
+            <div class="service-desc">Worked with Browns, DSW, KREWE, Faviana, Loft and more.</div>
+          </div>
+          <div class="service-cell">
+            <div class="service-num">04</div>
+            <div class="service-name">Consultations</div>
+            <div class="service-desc">Strategy sessions for photographers and content creators.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHOP -->
+    <div class="shop-section">
+      <div class="section-eyebrow">Shop</div>
+      <div class="section-title" style="font-size:44px;">Lightroom<br>Presets</div>
+      <div class="preset-grid">
+        <div class="preset-card">
+          <div class="preset-name">Warm Film</div>
+          <div class="preset-sub">Desktop + Mobile</div>
+        </div>
+        <div class="preset-card">
+          <div class="preset-name">Cool Edit</div>
+          <div class="preset-sub">Desktop + Mobile</div>
+        </div>
+      </div>
+      <div class="preset-note">#sweenshotspresets — no subscription needed.</div>
+    </div>
+
+    <!-- BRANDS -->
+    <div style="padding: 0 80px 80px;">
+      <div style="border: 1px solid var(--border); padding: 36px;">
+        <div class="section-eyebrow" style="margin-bottom:18px;">Brands We've Worked With</div>
+        <div class="brands-pills">
+          <div class="pill">Browns</div>
+          <div class="pill">DSW</div>
+          <div class="pill">KREWE</div>
+          <div class="pill">Faviana</div>
+          <div class="pill">Loft</div>
+          <div class="pill">Marc Jacobs</div>
+          <div class="pill">LikeToKnow.it</div>
+          <div class="pill">Old Navy</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA BAND -->
+    <div class="cta-band">
+      <div class="cta-title">Let's make<br>something together.</div>
+      <div class="cta-contact">281-435-9035 &nbsp;·&nbsp; sweenshots@gmail.com</div>
+      <div class="cta-btn">Get Started</div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div>
+        <div class="footer-logo">SweenShots</div>
+        <div class="footer-copy">© 2026</div>
+      </div>
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="#">Book Me</a>
+        <a href="#">Work</a>
+        <a href="#">Shop</a>
+        <a href="#">Instagram</a>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+
+<!-- ============================================================
+     MOBILE FRAME
+============================================================ -->
+<div>
+  <div class="label-above">MOBILE — 390px</div>
+  <div class="frame-mobile">
+
+    <!-- MOBILE NAV -->
+    <nav class="m-nav">
+      <div class="m-nav-logo">SweenShots</div>
+      <div class="m-nav-links">
+        <a href="#">Work</a>
+        <a href="#">Book</a>
+        <a href="#">Shop</a>
+      </div>
+    </nav>
+
+    <!-- MOBILE HERO -->
+    <section class="m-hero">
+      <div class="m-hero-bg"></div>
+      <div class="m-hero-overlay"></div>
+      <div class="m-hero-content">
+        <div class="m-hero-eyebrow">Lifestyle &amp; Blogger Photography</div>
+        <h1 class="m-hero-title">Photographs<br>that speak<br>out loud.</h1>
+        <a class="m-hero-btn" href="#">Book a Session</a>
+      </div>
+    </section>
+
+    <!-- MOBILE TICKER -->
+    <div class="m-ticker">
+      <div class="ticker-track">
+        <span class="ticker-text" style="font-size:9px;">Lifestyle &nbsp;·&nbsp; Editorial &nbsp;·&nbsp; Brand Partnerships &nbsp;·&nbsp; Blogger Sessions &nbsp;·&nbsp; Presets &nbsp;·&nbsp; Lifestyle &nbsp;·&nbsp; Editorial &nbsp;·&nbsp; Brand Partnerships &nbsp;·&nbsp; Blogger Sessions &nbsp;·&nbsp; Presets &nbsp;·&nbsp;</span>
+        <span class="ticker-text" style="font-size:9px;">Lifestyle &nbsp;·&nbsp; Editorial &nbsp;·&nbsp; Brand Partnerships &nbsp;·&nbsp; Blogger Sessions &nbsp;·&nbsp; Presets &nbsp;·&nbsp; Lifestyle &nbsp;·&nbsp; Editorial &nbsp;·&nbsp; Brand Partnerships &nbsp;·&nbsp; Blogger Sessions &nbsp;·&nbsp; Presets &nbsp;·&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- MOBILE WORK HEADING -->
+    <div class="m-section">
+      <div class="m-section-eyebrow">Selected Work</div>
+      <div class="m-section-title">Capturing the<br><em>details of you.</em></div>
+    </div>
+
+    <!-- MOBILE PHOTO GRID -->
+    <div class="m-photo-grid">
+      <div class="m-photo-row-2">
+        <div class="m-photo-tall">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <svg width="32" height="32" viewBox="0 0 48 48" fill="none" style="opacity:0.2;"><rect x="4" y="10" width="40" height="30" rx="2" stroke="white" stroke-width="2"/><circle cx="24" cy="24" r="7" stroke="white" stroke-width="2"/></svg>
+          </div>
+          <div class="m-photo-label">Lifestyle</div>
+        </div>
+        <div class="m-photo-tall">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <svg width="32" height="32" viewBox="0 0 48 48" fill="none" style="opacity:0.2;"><rect x="4" y="10" width="40" height="30" rx="2" stroke="white" stroke-width="2"/><circle cx="24" cy="24" r="7" stroke="white" stroke-width="2"/></svg>
+          </div>
+          <div class="m-photo-label">Editorial</div>
+        </div>
+      </div>
+      <div class="m-photo-row-3">
+        <div class="m-photo-short"></div>
+        <div class="m-photo-short"></div>
+        <div class="m-photo-short"></div>
+      </div>
+    </div>
+
+    <!-- MOBILE SERVICES -->
+    <div style="padding: 0 24px 48px;">
+      <div class="m-services">
+        <div class="m-services-header">
+          <div class="m-section-eyebrow" style="margin:0;">Services</div>
+        </div>
+        <div class="m-services-grid">
+          <div class="m-service-cell">
+            <div class="m-service-num">01</div>
+            <div class="m-service-name">Lifestyle Shoots</div>
+            <div class="m-service-desc">Freedom, movement, and authentic moments — scheduled 7 days a week.</div>
+          </div>
+          <div class="m-service-cell">
+            <div class="m-service-num">02</div>
+            <div class="m-service-name">Blog Content</div>
+            <div class="m-service-desc">Curated content tailored to your brand voice and platform aesthetic.</div>
+          </div>
+          <div class="m-service-cell">
+            <div class="m-service-num">03</div>
+            <div class="m-service-name">Brand Collabs</div>
+            <div class="m-service-desc">Worked with Browns, DSW, KREWE, Faviana, Loft and more.</div>
+          </div>
+          <div class="m-service-cell">
+            <div class="m-service-num">04</div>
+            <div class="m-service-name">Consultations</div>
+            <div class="m-service-desc">Strategy sessions for photographers and creators.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE SHOP -->
+    <div class="m-shop">
+      <div class="m-section-eyebrow">Shop</div>
+      <div class="m-section-title">Lightroom<br>Presets</div>
+      <div class="m-preset-grid">
+        <div class="m-preset-card">
+          <div class="m-preset-name">Warm Film</div>
+          <div class="m-preset-sub">Desktop + Mobile</div>
+        </div>
+        <div class="m-preset-card">
+          <div class="m-preset-name">Cool Edit</div>
+          <div class="m-preset-sub">Desktop + Mobile</div>
+        </div>
+      </div>
+    </div>
+    <div class="m-preset-note" style="padding: 8px 24px 48px;">#sweenshotspresets — no subscription needed.</div>
+
+    <!-- MOBILE BRANDS -->
+    <div style="padding: 0 24px 48px;">
+      <div style="border:1px solid rgba(255,255,255,0.1);padding:24px 20px;">
+        <div class="m-brands-label" style="padding-top:0;margin-bottom:14px;">Brands We've Worked With</div>
+        <div class="m-pills">
+          <div class="m-pill">Browns</div>
+          <div class="m-pill">DSW</div>
+          <div class="m-pill">KREWE</div>
+          <div class="m-pill">Faviana</div>
+          <div class="m-pill">Loft</div>
+          <div class="m-pill">Marc Jacobs</div>
+          <div class="m-pill">LTK</div>
+          <div class="m-pill">Old Navy</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE CTA -->
+    <div class="m-cta">
+      <div class="m-cta-title">Let's make<br>something together.</div>
+      <div class="m-cta-contact">281-435-9035<br>sweenshots@gmail.com</div>
+      <div class="m-cta-btn">Get Started</div>
+    </div>
+
+    <!-- MOBILE FOOTER -->
+    <footer class="m-footer">
+      <div>
+        <div class="m-footer-logo">SweenShots</div>
+        <div class="m-footer-copy">© 2026</div>
+      </div>
+      <div class="m-footer-links">
+        <a href="#">Home</a>
+        <a href="#">Book Me</a>
+        <a href="#">Shop</a>
+        <a href="#">Instagram</a>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+</body>
+</html>
